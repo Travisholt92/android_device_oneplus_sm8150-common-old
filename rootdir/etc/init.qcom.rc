@@ -170,6 +170,10 @@ on boot
     chmod 0666 /dev/qseecom
     chmod 0666 /dev/goodix_fp
 
+    # Smart charging
+    chown system system /sys/class/power_supply/battery/input_suspend
+    chmod 0666 /sys/class/power_supply/battery/input_suspend
+
     # Graphics
     chown system graphics /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/modes
     chmod 0666 /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/modes
