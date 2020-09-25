@@ -27,6 +27,7 @@
             <name>IBiometricsFingerprint</name>
             <instance>default</instance>
         </interface>
+        <fqname>@2.1::IBiometricsFingerprint/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.bluetooth</name>
@@ -308,6 +309,7 @@
             <name>IVibrator</name>
             <instance>default</instance>
         </interface>
+        <fqname>@1.2::IVibrator/default</fqname>
     </hal>
     <hal format="hidl">
         <name>com.qualcomm.qti.ant</name>
@@ -528,7 +530,7 @@
         </interface>
         <fqname>@1.0::IAudioHalExt/default</fqname>
     </hal>
-        <hal format="hidl">
+    <hal format="hidl">
         <name>vendor.qti.hardware.bluetooth_sar</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
