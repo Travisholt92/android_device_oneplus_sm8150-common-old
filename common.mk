@@ -41,6 +41,10 @@ AB_OTA_POSTINSTALL_CONFIG += \
 PRODUCT_PACKAGES += \
     otapreopt_script
 
+# APN
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/apns-conf.xml:system/etc/apns-conf.xml
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
@@ -348,16 +352,15 @@ PRODUCT_PACKAGES += \
     netutils-wrapper-1.0
 
 # NFC
-#PRODUCT_PACKAGES += \
-#   android.hardware.nfc@1.0:64 \
-#   android.hardware.nfc@1.1:64 \
-#   android.hardware.nfc@1.2:64 \
-#   android.hardware.secure_element@1.0:64 \
-#   android.hardware.secure_element@1.1:64 \
-#   com.android.nfc_extras \
-#   Tag \
-#   vendor.nxp.nxpese@1.0:64 \
-#   vendor.nxp.nxpnfc@1.0:64
+PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0:64 \
+    android.hardware.nfc@1.1:64 \
+    android.hardware.nfc@1.2:64 \
+    android.hardware.secure_element@1.0:64 \
+    android.hardware.secure_element@1.1:64 \
+    com.android.nfc_extras \
+    Tag \
+    NfcNci
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -445,10 +448,6 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/qcom-caf/sm8150/display \
     hardware/google/pixel
 
-# Remove unwanted packages
-PRODUCT_PACKAGES += \
-    RemovePackages
-
 # Telephony
 PRODUCT_PACKAGES += \
     ims-ext-common \
@@ -479,9 +478,9 @@ PRODUCT_PACKAGES += \
 #PRODUCT_PACKAGES += \
  #   vendor.lineage.touch@1.0-service.oneplus_msmnile
 
-# AOSiP Device Settings
-#PRODUCT_PACKAGES += \
-  #  DeviceSettings
+#AOSiP Device Settings
+PRODUCT_PACKAGES += \
+    DeviceSettings
 
 # tri-state key
 PRODUCT_PACKAGES += \
