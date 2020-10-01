@@ -145,7 +145,6 @@ product/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
 
 # Camera
 vendor/bin/hw/vendor.oneplus.camera.CameraHIDL@1.0-service
-vendor/lib/vendor.oneplus.camera.CameraMDMHIDL@1.0.so
 vendor/bin/vl53l1_daemon_main
 vendor/etc/camera/arccali.bin
 vendor/etc/camera/ashdr/iso617_4608x3456.ncf
