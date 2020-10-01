@@ -321,7 +321,7 @@ PRODUCT_PACKAGES += \
 
 # LiveDisplay
 #PRODUCT_PACKAGES += \
- #   vendor.lineage.livedisplay@2.0-service-sdm
+#   vendor.lineage.livedisplay@2.0-service-sdm
 
 # Media
 
@@ -381,7 +381,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.2-service-qti
+    android.hardware.power-service-qti
 
 # QMI
 PRODUCT_PACKAGES += \
@@ -439,7 +439,8 @@ PRODUCT_PACKAGES += \
 SRC_MEDIA_HAL_DIR := hardware/qcom-caf/sm8150/media
 SRC_DISPLAY_HAL_DIR := hardware/qcom-caf/sm8150/display
 SRC_AUDIO_HAL_DIR := hardware/qcom-caf/sm8150/audio
-
+PRODUCT_USES_QCOM_HARDWARE := true
+PRODUCT_BOARD_PLATFORM := msmnile
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     device/oneplus/common \
@@ -511,7 +512,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     prebuilts/vndk/v29/arm64/arch-arm-armv8-a/shared/vndk-sp/libhidlbase.so:$(TARGET_COPY_OUT_VENDOR)/lib/libhidlbase-v29.so \
-    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-sp/libhidlbase.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libhidlbase-v29.so
+    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-sp/libhidlbase.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libhidlbase-v29.so \
+    prebuilts/vndk/v29/arm64/arch-arm-armv8-a/shared/vndk-sp/libbinderthreadstate.so:$(TARGET_COPY_OUT_VENDOR)/lib/libbinderthreadstate.so \
+    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-sp/libbinderthreadstate.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libbinderthreadstate.so
 
 # Wifi
 PRODUCT_PACKAGES += \
