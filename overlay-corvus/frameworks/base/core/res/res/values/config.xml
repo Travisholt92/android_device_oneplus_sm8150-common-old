@@ -25,8 +25,8 @@
 
     <!-- Names of the key handler classes -->
     <string-array name="config_deviceKeyHandlerClasses" translatable="false">
-        <item>com.corvus.device.DeviceSettings.KeyHandler</item>
-        <item>com.corvus.device.DeviceSettings.TouchKeyHandler</item>
+        <item>com.android.touch.gestures.KeyHandler</item>
+        <item>org.evolution.device.DeviceSettings.KeyHandler</item>
         <item>org.lineageos.camerahelper.KeyHandler</item>
     </string-array>
     <!-- Hardware keys present on the device, stored as a bit field.
