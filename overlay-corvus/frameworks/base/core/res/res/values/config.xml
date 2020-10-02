@@ -27,7 +27,7 @@
     <string-array name="config_deviceKeyHandlerClasses" translatable="false">
         <item>com.android.touch.gestures.KeyHandler</item>
         <item>org.evolution.device.DeviceSettings.KeyHandler</item>
-        <item>org.evolution.camerahelper.KeyHandler</item>
+        <item>org.lineageos.camerahelper.KeyHandler</item>
     </string-array>
 
     <!-- Hardware keys present on the device, stored as a bit field.

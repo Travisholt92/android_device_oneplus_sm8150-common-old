@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.evolution.camerahelper;
+package org.lineageos.camerahelper;
 
 import android.os.FileUtils;
 import android.text.TextUtils;

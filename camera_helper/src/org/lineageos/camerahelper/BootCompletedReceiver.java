@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.evolution.camerahelper;
+package org.lineageos.camerahelper;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
