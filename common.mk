@@ -284,11 +284,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-hotword.xml
 
-# HWBinder
-PRODUCT_PACKAGES += \
-    libhwbinder \
-    libhwbinder.vendor
-
 # Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/fpc1020.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/fpc1020.kl \
@@ -412,15 +407,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libstdc++.vendor
 
-# Seccomp policy
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
-    $(LOCAL_PATH)/seccomp/codec2.vendor.ext.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/codec2.vendor.ext.policy
-
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl \
-    android.hardware.sensors@1.0-service \
+    android.hardware.sensors@1.0-impl.oneplus_msmnile \
+    android.hardware.sensors@1.0-service.oneplus_msmnile \
     libsensorndkbridge
 
 PRODUCT_COPY_FILES += \
@@ -477,8 +467,8 @@ PRODUCT_PACKAGES += \
     thermal.msmnile
 
 # Touch
-#PRODUCT_PACKAGES += \
- #   vendor.lineage.touch@1.0-service.oneplus_msmnile
+PRODUCT_PACKAGES += \
+    vendor.lineage.touch@1.0-service.oneplus_msmnile
 
 #AOSiP Device Settings
 PRODUCT_PACKAGES += \
@@ -504,7 +494,11 @@ PRODUCT_PACKAGES += \
 # VNDK
 # Update this list with what each blob is actually for
 PRODUCT_PACKAGES += \
-    com.android.vndk.current.on_vendor
+    com.android.vndk.current.on_vendor \
+    libhidltransport \
+    libhidltransport.vendor \
+    libhwbinder \
+    libhwbinder.vendor
 
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-lite-vendorcompat \
