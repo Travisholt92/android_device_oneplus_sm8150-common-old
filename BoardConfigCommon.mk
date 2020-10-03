@@ -99,7 +99,7 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_USES_QCNE := true
 
 # FOD
-#TARGET_SURFACEFLINGER_FOD_LIB := //$(VENDOR_PATH):libfod_extension.oneplus_msmnile
+TARGET_SURFACEFLINGER_FOD_LIB := //$(VENDOR_PATH):libfod_extension.oneplus_msmnile
 
 # Dex
 ifeq ($(HOST_OS),linux)
