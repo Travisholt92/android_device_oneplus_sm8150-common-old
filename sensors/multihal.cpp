@@ -40,8 +40,6 @@
 #include <stdlib.h>
 
 
-using android::base::GetProperty;
-
 static pthread_mutex_t init_modules_mutex = PTHREAD_MUTEX_INITIALIZER;
 static pthread_mutex_t init_sensors_mutex = PTHREAD_MUTEX_INITIALIZER;
 
