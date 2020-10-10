@@ -21,9 +21,9 @@ set -e
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
-CORVUS_ROOT="${MY_DIR}"/../../..
+KANGOS_ROOT="${MY_DIR}"/../../..
 
-HELPER="${CORVUS_ROOT}/vendor/corvus/build/tools/extract_utils.sh"
+HELPER="${KANGOS_ROOT}/vendor/kangos/build/tools/extract_utils.sh"
 if [ ! -f "${HELPER}" ]; then
     echo "Unable to find helper script at ${HELPER}"
     exit 1
@@ -74,7 +74,7 @@ if [ -z "${SRC}" ]; then
 fi
 
 # Initialize the helper for common device
-setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${CORVUS_ROOT}" true "${CLEAN_VENDOR}"
+setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${KANGOS_ROOT}" true "${CLEAN_VENDOR}"
 
 extract "${MY_DIR}/proprietary-files.txt" "${SRC}" \
         "${KANG}" --section "${SECTION}"
@@ -82,20 +82,20 @@ extract "${MY_DIR}/proprietary-files.txt" "${SRC}" \
 if [ -s "${MY_DIR}/../${DEVICE}/proprietary-files.txt" ]; then
     # Reinitialize the helper for device
     source "${MY_DIR}/../${DEVICE}/extract-files.sh"
-    setup_vendor "${DEVICE}" "${VENDOR}" "${CORVUS_ROOT}" false "${CLEAN_VENDOR}"
+    setup_vendor "${DEVICE}" "${VENDOR}" "${KANGOS_ROOT}" false "${CLEAN_VENDOR}"
 
     extract "${MY_DIR}/../${DEVICE}/proprietary-files.txt" "${SRC}" \
             "${KANG}" --section "${SECTION}"
 fi
 
-COMMON_BLOB_ROOT="${CORVUS_ROOT}/vendor/${VENDOR}/${DEVICE_COMMON}/proprietary"
+COMMON_BLOB_ROOT="${KANGOS_ROOT}/vendor/${VENDOR}/${DEVICE_COMMON}/proprietary"
 
 "${MY_DIR}/setup-makefiles.sh"
 
-CAM32="$CORVUS_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary/vendor/lib/hw/camera.qcom.so
+CAM32="$KANGOS_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary/vendor/lib/hw/camera.qcom.so
 patchelf --replace-needed libhidlbase.so libhidlbase-v29.so "$CAM32"
 
-CAM64="$CORVUS_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary/vendor/lib64/hw/camera.qcom.so
+CAM64="$KANGOS_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary/vendor/lib64/hw/camera.qcom.so
 patchelf --replace-needed libhidlbase.so libhidlbase-v29.so "$CAM64"
 
 #

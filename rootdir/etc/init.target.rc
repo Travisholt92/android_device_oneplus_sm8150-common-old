@@ -203,6 +203,12 @@ on boot
     restorecon /sys/kernel/debug/regmap/0-0042/registers
     restorecon /sys/kernel/debug/regmap/tavil-slim-pgd/registers
 
+on boot
+    # Touchscreen/DT2W
+    chown system system /proc/touchpanel/double_tap_enable
+    chown 0660 /proc/touchpanel/double_tap_enable
+    write /proc/touchpanel/double_tap_enable 1
+
 on property:vendor.display.lcd_density=560
    setprop dalvik.vm.heapgrowthlimit 256m
 
