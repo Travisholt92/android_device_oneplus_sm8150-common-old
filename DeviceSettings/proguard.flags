@@ -1,3 +1,3 @@
--keep class com.corvus.device.DeviceSettings.* {
+-keep class org.evolution.device.DeviceSettings.* {
   *;
 }

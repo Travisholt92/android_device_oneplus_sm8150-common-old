@@ -473,4 +473,18 @@
         <item>0:2:15</item>
     </string-array>
 
+    <!-- FOD fingerprint scanner -->	
+    <bool name="config_needCustomFODView">true</bool>
+
+    <!-- OnePlus uses a proprietary vibrator hal to utilize the new powerful motor since the
+	             OnePlus 7 Pro. This HAL expects a different format for the data instead of the usual (ms)
+         timing(the duration which the vibrator is expected to vibrate for). -->
+    <bool name="config_hasOnePlusHapticMotor">true</bool>
+
+    <!-- Whether device has FOD -->
+    <bool name="config_supportsInDisplayFingerprint">true</bool>
+
+    <!-- Enable face auth when swiping security view -->
+    <bool name="config_faceAuthOnSecurityView">true</bool>
+
 </resources>

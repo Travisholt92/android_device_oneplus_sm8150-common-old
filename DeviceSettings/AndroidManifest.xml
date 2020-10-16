@@ -14,9 +14,9 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           android:sharedUserId="android.uid.system"
-          package="com.corvus.device.DeviceSettings"
-          android:versionCode="1"
-          android:versionName="1.0" >
+          package="org.evolution.device.DeviceSettings"
+          android:versionCode="2"
+          android:versionName="2.0" >
 
     <uses-permission android:name="android.permission.INJECT_EVENTS"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -24,7 +24,7 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <protected-broadcast android:name="com.corvus.device.DeviceSettings.UPDATE_SETTINGS" />
+    <protected-broadcast android:name=">org.evolution.device.DeviceSettings.UPDATE_SLIDER_POSITION" />
 
     <uses-sdk
         android:minSdkVersion="28"
@@ -56,7 +56,7 @@
         <activity android:name=".KeyHandler" />
 
         <activity
-            android:name="com.corvus.device.DeviceSettings.PanelSettingsActivity"
+            android:name="org.evolution.device.DeviceSettings.PanelSettingsActivity"
             android:exported="true"
             android:label="@string/panel_category_title"
             android:launchMode="singleTask" >
@@ -66,22 +66,18 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".TouchscreenGestureSettings"
-            android:label="@string/touchscreen_gesture_settings_title"
-            android:theme="@style/AppTheme">
-        </activity>
-
-        <receiver android:name="com.corvus.device.DeviceSettings.Startup" >
+        <receiver 
+            android:name="org.evolution.device.DeviceSettings.Startup" 
+            android:enabled="true">
             <intent-filter android:priority="100" >
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
-        <!-- Quick Settings Tiles -->
+        <!-- DC-Dimming tile -->
         <service
-            android:name="com.corvus.device.DeviceSettings.DCModeTileService"
-            android:icon="@drawable/ic_dimming_off"
+            android:name="org.evolution.device.DeviceSettings.DCModeTileService"
+            android:icon="@drawable/ic_dc_tile"
             android:label="@string/tile_dc_mode"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
@@ -89,8 +85,10 @@
                     android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
         </service>
+
+        <!-- Panel mode's tile -->
         <service
-            android:name="com.corvus.device.DeviceSettings.PanelModeTileService"
+            android:name="org.evolution.device.DeviceSettings.PanelModeTileService"
             android:icon="@drawable/ic_panel_tile"
             android:label="@string/tile_panel_mode"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
@@ -99,8 +97,10 @@
                     android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
         </service>
+
+        <!-- HBM tile -->
         <service
-            android:name="com.corvus.device.DeviceSettings.HBMModeTileService"
+            android:name="org.evolution.device.DeviceSettings.HBMModeTileService"
             android:icon="@drawable/ic_hbm_tile"
             android:label="@string/tile_hbm_mode"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
@@ -109,8 +109,13 @@
                     android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
         </service>
+
+        <!-- Auto HBM service -->
+        <service android:name="org.evolution.device.DeviceSettings.AutoHBMService" />
+
+        <!-- Refresh rate tile -->
         <service
-            android:name="com.corvus.device.DeviceSettings.RefreshRateTileService"
+            android:name="org.evolution.device.DeviceSettings.RefreshRateTileService"
             android:icon="@drawable/ic_refresh_tile_60"
             android:label="@string/tile_refresh_rate"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
@@ -120,10 +125,7 @@
             </intent-filter>
         </service>
 
-        <service android:name="com.corvus.device.DeviceSettings.FPSInfoService"
-                android:exported="false">
-        </service>
-
+        <!-- FPS overlay tile -->
         <service
             android:name=".FPSTileService"
             android:icon="@drawable/ic_fps"
@@ -135,10 +137,15 @@
             </intent-filter>
         </service>
 
+        <!-- FPS info service -->
+        <service android:name="org.evolution.device.DeviceSettings.FPSInfoService"
+                android:exported="false">
+        </service>
+
         <!-- Search indexing -->
         <provider
             android:name=".ConfigPanelSearchIndexablesProvider"
-            android:authorities="com.corvus.device"
+            android:authorities="org.evolution.device"
             android:multiprocess="false"
             android:grantUriPermissions="true"
             android:permission="android.permission.READ_SEARCH_INDEXABLES"
