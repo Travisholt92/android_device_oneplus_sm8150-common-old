@@ -92,12 +92,6 @@ COMMON_BLOB_ROOT="${KANGOS_ROOT}/vendor/${VENDOR}/${DEVICE_COMMON}/proprietary"
 
 "${MY_DIR}/setup-makefiles.sh"
 
-CAM32="$KANGOS_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary/vendor/lib/hw/camera.qcom.so
-patchelf --replace-needed libhidlbase.so libhidlbase-v29.so "$CAM32"
-
-CAM64="$KANGOS_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary/vendor/lib64/hw/camera.qcom.so
-patchelf --replace-needed libhidlbase.so libhidlbase-v29.so "$CAM64"
-
 #
 # Fix xml version
 #
