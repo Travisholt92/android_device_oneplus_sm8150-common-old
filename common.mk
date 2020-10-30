@@ -437,7 +437,6 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/qcom-caf/sm8150/audio \
     hardware/qcom-caf/sm8150/media \
     hardware/qcom-caf/sm8150/display \
-    hardware/google/pixel
 
 # Telephony
 PRODUCT_PACKAGES += \
