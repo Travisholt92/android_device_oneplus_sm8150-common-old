@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.evolution.settings.doze;
+package org.kangos.settings.doze;
 
 import android.app.ActionBar;
 import android.app.Activity;

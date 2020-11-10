@@ -245,6 +245,9 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.3-service.clearkey
 
+# SafetyNet
+PRODUCT_SAFETYNET_MODEL_HACK := true
+
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service.oneplus_msmnile \

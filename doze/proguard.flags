@@ -3,6 +3,6 @@
 }
 
 -keep class ** extends android.support.v14.preference.PreferenceFragment
--keep class org.evolution.settings.doze.* {
+-keep class org.kangos.settings.doze.* {
   *;
 }

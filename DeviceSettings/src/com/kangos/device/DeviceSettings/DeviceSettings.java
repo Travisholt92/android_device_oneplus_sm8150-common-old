@@ -64,14 +64,12 @@ public class DeviceSettings extends PreferenceFragment
     public static final String KEY_FPS_INFO = "fps_info";
 
     public static final String KEY_VIBSTRENGTH = "vib_strength";
-    private static final String KEY_ENABLE_DOLBY_ATMOS = "enable_dolby_atmos";
 
     public static final String KEY_SETTINGS_PREFIX = "device_setting_";
 
     private static TwoStatePreference mHBMModeSwitch;
     private static TwoStatePreference mDCModeSwitch;
     private static TwoStatePreference mRefreshRate;
-    private static TwoStatePreference mEnableDolbyAtmos;
     private static SwitchPreference mAutoRefreshRate;
     private static SwitchPreference mFpsInfo;
     private ListPreference mTopKeyPref;
@@ -110,8 +108,6 @@ public class DeviceSettings extends PreferenceFragment
         mHBMModeSwitch.setChecked(HBMModeSwitch.isCurrentlyEnabled(this.getContext()));
         mHBMModeSwitch.setOnPreferenceChangeListener(new HBMModeSwitch());
 
-        mEnableDolbyAtmos = (TwoStatePreference) findPreference(KEY_ENABLE_DOLBY_ATMOS);
-        mEnableDolbyAtmos.setOnPreferenceChangeListener(this);
 
         if (getResources().getBoolean(R.bool.config_deviceHasHighRefreshRate)) {
             mAutoRefreshRate = (SwitchPreference) findPreference(KEY_AUTO_REFRESH_RATE);
@@ -149,22 +145,6 @@ public class DeviceSettings extends PreferenceFragment
                 this.getContext().startService(fpsinfo);
             } else {
                 this.getContext().stopService(fpsinfo);
-            }
-        } else if (preference == mEnableDolbyAtmos) {
-            boolean enabled = (Boolean) newValue;
-            Intent daxService = new Intent();
-            ComponentName name = new ComponentName("com.dolby.daxservice", "com.dolby.daxservice.DaxService");
-            daxService.setComponent(name);
-            if (enabled) {
-                // enable service component and start service
-                this.getContext().getPackageManager().setComponentEnabledSetting(name,
-                        PackageManager.COMPONENT_ENABLED_STATE_DEFAULT, 0);
-                this.getContext().startService(daxService);
-            } else {
-                // disable service component and stop service
-                this.getContext().stopService(daxService);
-                this.getContext().getPackageManager().setComponentEnabledSetting(name,
-                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED, 0);
             }
         } else {
             Constants.setPreferenceInt(getContext(), preference.getKey(), Integer.parseInt((String) newValue));
