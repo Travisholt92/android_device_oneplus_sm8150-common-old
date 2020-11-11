@@ -1,1 +1,2 @@
 user=system seinfo=platform name=org.evolution.camerahelper domain=camera_helper_app type=system_app_data_file
+user=_app seinfo=platform name=com.google.android.flipendo domain=flipendo type=app_data_file levelFrom=all
