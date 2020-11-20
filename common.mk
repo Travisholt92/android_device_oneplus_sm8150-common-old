@@ -196,7 +196,6 @@ PRODUCT_PACKAGES += \
     init.qcom.factory.rc \
     init.qcom.post_boot.sh \
     init.qcom.rc \
-    init.safailnet.rc \
     init.qcom.sdio.sh \
     init.qcom.sensors.sh \
     init.qcom.sh \
