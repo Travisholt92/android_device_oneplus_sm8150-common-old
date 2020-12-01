@@ -66,6 +66,7 @@ r_dir_file(hal_sensors_default, vendor_sysfs_graphics)
 # Allow hal_sensors_default to get vendor_sensors_prop
 get_prop(hal_sensors_default, vendor_sensors_prop)
 
+<<<<<<< HEAD
 # Allow hal_sensors_default to get night mode prop
 get_prop(hal_sensors_default, powerctl_prop)
 
@@ -77,3 +78,6 @@ allow hal_sensors_default property_socket:sock_file write;
 
 # Allow hal_sensors_default to connect to init:unix_stream_socket
 allow hal_sensors_default init:unix_stream_socket connectto;
+
+# Allow hal_sensors_default to write sysfs file
+allow hal_sensors_default sysfs:file { read write };
