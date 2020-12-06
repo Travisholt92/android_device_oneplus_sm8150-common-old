@@ -18,11 +18,13 @@
 package com.kangos.device.DeviceSettings;
 
 import android.Manifest;
+import android.app.ActivityThread;
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -32,6 +34,7 @@ import android.media.AudioManager;
 import android.media.session.MediaSessionLegacyHelper;
 import android.os.FileObserver;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
@@ -44,6 +47,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.KeyEvent;
+import android.widget.Toast;
 
 import com.android.internal.os.DeviceKeyHandler;
 import com.android.internal.util.ArrayUtils;
@@ -51,6 +55,8 @@ import com.android.internal.util.ArrayUtils;
 import com.kangos.device.DeviceSettings.Constants;
 
 import vendor.oneplus.camera.CameraHIDL.V1_0.IOnePlusCameraProvider;
+import com.kangos.device.DeviceSettings.DeviceSettings;
+import com.kangos.device.DeviceSettings.R;
 
 public class KeyHandler implements DeviceKeyHandler {
 
@@ -76,11 +82,15 @@ public class KeyHandler implements DeviceKeyHandler {
 
     public static final String CLIENT_PACKAGE_NAME = "com.oneplus.camera";
     public static final String CLIENT_PACKAGE_PATH = "/data/misc/aosp/client_package_name";
+    private static Toast mToast;
 
     private final Context mContext;
+    private final Context mResContext;
+    private final Context mSysUiContext;
     private final PowerManager mPowerManager;
     private final NotificationManager mNotificationManager;
     private final AudioManager mAudioManager;
+
     private SensorManager mSensorManager;
     private Sensor mProximitySensor;
     private Vibrator mVibrator;
@@ -108,6 +118,8 @@ public class KeyHandler implements DeviceKeyHandler {
 
     public KeyHandler(Context context) {
         mContext = context;
+        mResContext = getResContext(context);
+        mSysUiContext = ActivityThread.currentActivityThread().getSystemUiContext();
         mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         mNotificationManager
                 = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -144,7 +156,7 @@ public class KeyHandler implements DeviceKeyHandler {
         try {
             keyCodeValue = Constants.getPreferenceInt(mContext, keyCode);
         } catch (Exception e) {
-             return event;
+            return event;
         }
 
         if (!hasSetupCompleted()) {
@@ -159,6 +171,40 @@ public class KeyHandler implements DeviceKeyHandler {
         mAudioManager.setRingerModeInternal(sSupportedSliderRingModes.get(keyCodeValue));
         mNotificationManager.setZenMode(sSupportedSliderZenModes.get(keyCodeValue), null, TAG);
         doHapticFeedback();
+
+        String toastText;
+        Resources res = mResContext.getResources();
+        int key = sSupportedSliderRingModes.keyAt(
+                sSupportedSliderRingModes.indexOfKey(keyCodeValue));
+        switch (key) {
+            case Constants.KEY_VALUE_TOTAL_SILENCE: // DND - no int'
+                toastText = res.getString(R.string.slider_toast_dnd);
+                break;
+            case Constants.KEY_VALUE_SILENT: // Ringer silent
+                toastText = res.getString(R.string.slider_toast_silent);
+                break;
+            case Constants.KEY_VALUE_PRIORTY_ONLY: // DND - priority
+                toastText = res.getString(R.string.slider_toast_priority);
+                break;
+            case Constants.KEY_VALUE_VIBRATE: // Ringer vibrate
+                toastText = res.getString(R.string.slider_toast_vibrate);
+                break;
+            default:
+            case Constants.KEY_VALUE_NORMAL: // Ringer normal DND off
+                toastText = res.getString(R.string.slider_toast_normal);
+                break;
+        }
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (mToast != null) mToast.cancel();
+                mToast = Toast.makeText(
+                        mSysUiContext, toastText, Toast.LENGTH_SHORT);
+                mToast.show();
+            }
+        });
+
         return null;
     }
 
@@ -167,6 +213,18 @@ public class KeyHandler implements DeviceKeyHandler {
             mVibrator.vibrate(VibrationEffect.createOneShot(50,
                     VibrationEffect.DEFAULT_AMPLITUDE));
         }
+    }
+
+    private Context getResContext(Context context) {
+        Context resContext;
+        try {
+            resContext = context.createPackageContext("com.kangos.device.DeviceSettings",
+                    Context.CONTEXT_IGNORE_SECURITY | Context.CONTEXT_INCLUDE_CODE);
+        } catch (NameNotFoundException e) {
+            // nothing to do about this, shouldn't ever reach here anyway
+            resContext = context;
+        }
+        return resContext;
     }
 
     public void handleNavbarToggle(boolean enabled) {
