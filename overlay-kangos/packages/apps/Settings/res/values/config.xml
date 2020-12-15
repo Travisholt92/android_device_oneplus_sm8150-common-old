@@ -28,4 +28,7 @@
 
     <!-- FOD recognizing animation -->
     <bool name="config_showFODAnimationSettings">true</bool>
+
+    <!-- Disable Settings COlor Mode -->
+    <bool name="config_show_color_mode">false</bool>
 </resources>
