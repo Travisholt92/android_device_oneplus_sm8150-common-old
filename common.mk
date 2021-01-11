@@ -19,13 +19,7 @@ PRODUCT_COPY_FILES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-kangos \
-    $(LOCAL_PATH)/overlay-system
-
-PRODUCT_ENFORCE_RRO_TARGETS := *
-
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-system
+    $(LOCAL_PATH)/overlay-kangos
 
 # A/B
 AB_OTA_UPDATER := true
