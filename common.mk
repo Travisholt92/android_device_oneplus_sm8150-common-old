@@ -490,6 +490,10 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service \
 
+# Vendor libgui
+PRODUCT_PACKAGES += \
+    libgui_vendor
+
 # VNDK
 # Update this list with what each blob is actually for
 PRODUCT_PACKAGES += \
