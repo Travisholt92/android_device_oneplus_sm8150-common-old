@@ -408,10 +408,6 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2
 
-# Vendor libstdc++
-PRODUCT_PACKAGES += \
-    libstdc++.vendor
-
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl.oneplus_msmnile \
@@ -488,16 +484,19 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service \
+    android.hardware.usb@1.0-service
 
 # Vendor libgui
 PRODUCT_PACKAGES += \
     libgui_vendor
 
+# Vendor libstdc++
+PRODUCT_PACKAGES += \
+    libstdc++.vendor
+
 # VNDK
 # Update this list with what each blob is actually for
 PRODUCT_PACKAGES += \
-    com.android.vndk.current.on_vendor \
     libhidltransport \
     libhidltransport.vendor \
     libhwbinder \
