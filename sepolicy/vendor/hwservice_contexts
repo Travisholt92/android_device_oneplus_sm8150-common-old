@@ -18,4 +18,3 @@ vendor.oneplus.hardware.rpmb::IOneplusRpmb                                 u:obj
 vendor.oneplus.hardware.wifi::IOneplusWifi                                 u:object_r:hal_wifi_hwservice:s0
 vendor.lineage.biometrics.fingerprint.inscreen::IFingerprintInscreen       u:object_r:hal_fingerprint_hwservice:s0
 vendor.lineage.touch::ITouchscreenGesture                                  u:object_r:hal_lineage_touch_hwservice:s0
-vendor.lineage.camera.motor::ICameraMotor                                  u:object_r:hal_lineage_camera_motor_hwservice:s0
