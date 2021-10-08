@@ -215,6 +215,7 @@ PRODUCT_PACKAGES += \
     init.qti.ims.sh \
     init.recovery.qcom.rc \
     init.target.rc \
+    init.logcat.rc \
     kmemleak.sh \
     ueventd.rc \
     vendor.oem_ftm.rc \
