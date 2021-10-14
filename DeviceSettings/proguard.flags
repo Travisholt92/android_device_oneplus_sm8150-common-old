@@ -1,3 +1,0 @@
--keep class com.kangos.device.DeviceSettings.* {
-  *;
-}

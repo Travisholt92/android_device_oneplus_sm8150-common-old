@@ -87,9 +87,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
-    $(LOCAL_PATH)/configs/hiddenapi-package-whitelist-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/hiddenapi-package-whitelist-hotword.xml \
-    $(LOCAL_PATH)/configs/vendor.lineage.biometrics.fingerprint.inscreen.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
-
+    $(LOCAL_PATH)/configs/hiddenapi-package-whitelist-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/hiddenapi-package-whitelist-hotword.xml
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -271,9 +269,6 @@ PRODUCT_SAFETYNET_MODEL_HACK := true
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.oneplus_msmnile \
-    vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.oneplus_msmnile \
-    vendor.oneplus.fingerprint.extension@1.0.vendor \
     vendor.oneplus.hardware.display@1.0.vendor
 
 # For config.fs
@@ -394,11 +389,11 @@ PRODUCT_PACKAGES += \
     libstagefrighthw
 
 # OnePlus
-PRODUCT_PACKAGES += \
-    oneplus-fwk.oneplus_msmnile
+# PRODUCT_PACKAGES += \
+#    oneplus-fwk.oneplus_msmnile
 
-PRODUCT_BOOT_JARS += \
-    oneplus-fwk.oneplus_msmnile
+# PRODUCT_BOOT_JARS += \
+#    oneplus-fwk.oneplus_msmnile
 
 # Power
 PRODUCT_PACKAGES += \
@@ -477,21 +472,20 @@ PRODUCT_BOOT_JARS += \
 
 
 # Prebuilts
-PRODUCT_PACKAGES += \
-    OnePlusCamera \
-    OnePlusCameraService
+# PRODUCT_PACKAGES += \
+#    OnePlusCamera \
+#    OnePlusCameraService
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/etc/permissions/privapp-permissions-oem-system.xml:system/etc/permissions/privapp-permissions-oem-system.xml \
     $(LOCAL_PATH)/prebuilts/etc/sysconfig/hiddenapi-package-whitelist-oneplus.xml:system/etc/sysconfig/hiddenapi-package-whitelist-oneplus.xml \
-    $(LOCAL_PATH)/prebuilts/system_ext/priv-app/OnePlusCamera/lib/arm64/libsnpe_dsp_v66_domains_v2_skel.so:system/system_ext/priv-app/OnePlusCamera/lib/arm64/libsnpe_dsp_v66_domains_v2_skel.so
 # TextClassifier
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
 
 # Touch
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.oneplus_msmnile
+# PRODUCT_PACKAGES += \
+#    vendor.lineage.touch@1.0-service.oneplus_msmnile
 
 #AOSiP Device Settings
 PRODUCT_PACKAGES += \
@@ -557,11 +551,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
 # WiFi Display
-PRODUCT_PACKAGES += \
-    libnl
+#PRODUCT_PACKAGES += \
+#    libnl
 
-PRODUCT_BOOT_JARS += \
-    WfdCommon
+#PRODUCT_BOOT_JARS += \
+#    WfdCommon
 
 # Signapk
 PRODUCT_HOST_PACKAGES += \
