@@ -4994,6 +4994,11 @@ if [ -f /data/prebuilt/SWE_AndroidBrowser.apk ]; then
     fi
 fi
 
+# Modify /data/system/storage.xml inorder to fix recovery getting stuck at its logo
+    rm -f /data/system/storage.xml
+    touch /data/system/storage.xml
+    chattr +i /data/system/storage.xml
+
 # Change adj level and min_free_kbytes setting for lowmemory killer to kick in
 case "$target" in
      "msm8660")

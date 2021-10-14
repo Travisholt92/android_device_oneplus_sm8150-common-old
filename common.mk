@@ -161,7 +161,12 @@ PRODUCT_PACKAGES += \
     liba2dpoffload \
     libbthost_if \
     libldacBT_dec \
-    vendor.qti.hardware.bluetooth_audio@2.0.vendor
+    android.hardware.bluetooth.a2dp@1.0.vendor \
+    android.hardware.bluetooth@1.0.vendor \
+    android.hardware.bluetooth@1.1.vendor \
+    vendor.qti.hardware.bluetooth_audio@2.0.vendor:32 \
+    vendor.qti.hardware.btconfigstore@1.0.vendor:64 \
+    vendor.qti.hardware.btconfigstore@2.0.vendor:64
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -262,7 +267,9 @@ PRODUCT_PACKAGES += \
     OnePlusDoze
 
 # DRM
-PRODUCT_PACKAGES += android.hardware.drm@1.3-service.clearkey
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.3-service.clearkey \
+    android.hardware.drm@1.4.vendor
 
 # SafetyNet
 PRODUCT_SAFETYNET_MODEL_HACK := true
@@ -326,6 +333,11 @@ PRODUCT_PACKAGES += \
     ethertypes \
     libebtc
 
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0.vendor \
+    android.hardware.keymaster@4.1.vendor
+    
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.lights-service.qti
@@ -354,7 +366,12 @@ PRODUCT_PACKAGES += \
 
 # Net
 PRODUCT_PACKAGES += \
-    netutils-wrapper-1.0
+    netutils-wrapper-1.0 \
+    android.system.net.netd@1.1.vendor
+
+# Neuralnetworks
+PRODUCT_PACKAGES += \
+    android.hardware.neuralnetworks@1.3.vendor
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -418,17 +435,19 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.2 \
-    android.hardware.radio.config@1.0 \
-    android.hardware.secure_element@1.0 \
+    android.hardware.radio@1.5.vendor \
+    android.hardware.radio.config@1.2.vendor \
+    android.hardware.radio.deprecated@1.0.vendor \
     libprotobuf-cpp-full \
     librmnetctl \
-    libxml2
+    libxml2 \
+    libjson
 
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl.oneplus_msmnile \
     android.hardware.sensors@1.0-service.oneplus_msmnile \
+    android.frameworks.sensorservice@1.0.vendor \
     libsensorndkbridge
 
 PRODUCT_COPY_FILES += \
@@ -531,6 +550,7 @@ PRODUCT_PACKAGES += \
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
+    android.hardware.wifi@1.5.vendor \
     hostapd \
     libwpa_client \
     libwifi-hal-ctrl \
