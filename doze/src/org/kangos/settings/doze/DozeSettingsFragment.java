@@ -64,8 +64,6 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
 
         win.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         win.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        win.setNavigationBarColor(res.getColor(R.color.primary_color));
-        win.setNavigationBarDividerColor(res.getColor(R.color.primary_color));
 
         final ActionBar actionBar = getActivity().getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
